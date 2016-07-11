@@ -5,6 +5,8 @@ import com.is.tngou.mvp.interactor.GalleryInteractor;
 import com.is.tngou.mvp.listeners.BaseMultiLoadedListener;
 import com.is.tngou.mvp.view.GalleryView;
 
+import org.json.JSONObject;
+
 import java.util.List;
 
 /**
@@ -19,9 +21,14 @@ public class GalleryPresenterImpl implements BaseMultiLoadedListener<List<Galler
         galleryInteractor=new GalleryInteractor(this);
     }
 
+    public void getGalleryPhotoList(int event,JSONObject json){
+        galleryView.showLoading(null);
+        galleryInteractor.getCommonListData(event,json);
+    }
     @Override
     public void onSuccess(int event_tag, List<Gallery> data) {
         galleryView.hideLoading();
+        galleryView.onGalleryPhotoList(data);
     }
 
     @Override

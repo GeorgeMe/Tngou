@@ -1,9 +1,12 @@
 package com.is.tngou.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by George on 2016/7/10.
  */
-public class Gallery {
+public class Gallery implements Serializable{
+
     private int count;
     private int fcount;
     private int galleryclass;
